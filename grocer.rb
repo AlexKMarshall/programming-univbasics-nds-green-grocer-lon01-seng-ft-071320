@@ -21,6 +21,15 @@ def consolidate_cart(cart)
   consolidated
 end
 
+def create_couponed_item(coupon, item)
+  {
+    item: "#{item_in_cart[:item]} W/COUPON",
+    price: coupon[:cost] / coupon[:num],
+    clearance: item_in_cart[:clearance],
+    count: coupon[:num]
+  }
+end
+
 def apply_coupons(cart, coupons)
   coupons.count.times do |index|
     coupon = coupons[index]
