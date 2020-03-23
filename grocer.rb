@@ -64,6 +64,7 @@ def checkout(cart, coupons)
   # some irritated customers
   consolidate_cart(cart)
   apply_coupons(cart, coupons)
+  
   result = 0
   cart.count.times do |index|
     item = cart[index]
