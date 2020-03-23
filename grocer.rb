@@ -69,7 +69,7 @@ def checkout(cart, coupons)
   cleared = apply_clearance(couponed)
   pp cleared
   result = 0
-  cart.count.times do |index|
+  cleared.count.times do |index|
     item = cart[index]
     result += item[:price] * item[:count]
   end
