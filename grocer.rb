@@ -25,7 +25,7 @@ def create_couponed_item(coupon, item)
   {
     item: "#{item[:item]} W/COUPON",
     price: coupon[:cost] / coupon[:num],
-    clearance: item_in_cart[:clearance],
+    clearance: item[:clearance],
     count: coupon[:num]
   }
 end
