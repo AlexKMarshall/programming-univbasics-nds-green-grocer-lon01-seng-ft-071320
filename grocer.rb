@@ -64,8 +64,8 @@ def checkout(cart, coupons)
   # some irritated customers
 
   cart = consolidate_cart(cart)
-  cart = apply_coupons(consolidated, coupons)
-  cart = apply_clearance(couponed)
+  cart = apply_coupons(cart, coupons)
+  cart = apply_clearance(cart)
 
   result = 0
   cart.count.times do |index|
