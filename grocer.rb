@@ -62,20 +62,15 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
-  pp cart
-  puts "then"
-  consolidated = consolidate_cart(cart)
-  couponed = apply_coupons(consolidated, coupons)
-  cleared = apply_clearance(couponed)
-  pp cleared
+
+  cart = consolidate_cart(cart)
+  cart = apply_coupons(consolidated, coupons)
+  cart = apply_clearance(couponed)
+
   result = 0
-  cleared.count.times do |index|
-    item = cleared[index]
-    next_value = (item[:price] * item[:count])
-    result += next_value
-    pp item
-    puts next_value
-    puts result
+  cart.count.times do |index|
+    item = cart[index]
+    result += (item[:price] * item[:count])
   end
   result
 end
