@@ -73,6 +73,7 @@ def checkout(cart, coupons)
     item = cart[index]
     next_value = (item[:price] * item[:count])
     result += next_value
+    pp item
     puts next_value
     puts result
   end
