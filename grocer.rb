@@ -67,7 +67,7 @@ def checkout(cart, coupons)
   consolidated = consolidate_cart(cart)
   couponed = apply_coupons(consolidated, coupons)
   cleared = apply_clearance(couponed)
-  pp cart
+  pp cleared
   result = 0
   cart.count.times do |index|
     item = cart[index]
