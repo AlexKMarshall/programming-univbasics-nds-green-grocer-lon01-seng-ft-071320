@@ -54,6 +54,12 @@ def apply_clearance(cart)
   cart
 end
 
+def apply_discount(total)
+  DISCOUNT_THRESHOLD = 100
+  DISCOUNT_PERCENT = 10
+  total > DISCOUNT_THRESHOLD
+end
+
 def checkout(cart, coupons)
   cart = consolidate_cart(cart)
   cart = apply_coupons(cart, coupons)
@@ -64,5 +70,5 @@ def checkout(cart, coupons)
     item = cart[index]
     result += (item[:price] * item[:count])
   end
-  result
+  result = apply_discount(result)
 end
