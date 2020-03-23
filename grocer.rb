@@ -40,6 +40,10 @@ def apply_coupons(cart, coupons)
   cart
 end
 
+def discount(price)
+  
+end
+
 def apply_clearance(cart)
   cart.count.times do |index|
     item = cart[index]
