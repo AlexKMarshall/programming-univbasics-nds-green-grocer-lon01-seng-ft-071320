@@ -23,7 +23,7 @@ end
 
 def create_couponed_item(coupon, item)
   {
-    item: "#{item_in_cart[:item]} W/COUPON",
+    item: "#{item[:item]} W/COUPON",
     price: coupon[:cost] / coupon[:num],
     clearance: item_in_cart[:clearance],
     count: coupon[:num]
@@ -34,13 +34,7 @@ def apply_coupons(cart, coupons)
   coupons.count.times do |index|
     coupon = coupons[index]
     item_in_cart = find_item_by_name_in_collection(coupon[:item], cart)
-    couponed_item = {
-      item: "#{item_in_cart[:item]} W/COUPON",
-      price: coupon[:cost] / coupon[:num],
-      clearance: item_in_cart[:clearance],
-      count: coupon[:num]
-    }
-    cart << couponed_item
+    cart << create_couponed_item(coupon, item_in_cart)
     item_in_cart[:count] -= coupon[:num]
   end
   cart
