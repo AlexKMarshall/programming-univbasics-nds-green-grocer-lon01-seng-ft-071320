@@ -32,6 +32,8 @@ end
 
 def apply_coupons(cart, coupons)
   new_cart = []
+  cart.count.times do |index|
+  end
   
   
   
