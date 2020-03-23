@@ -55,9 +55,9 @@ def apply_clearance(cart)
 end
 
 def apply_discount(total)
-  DISCOUNT_THRESHOLD = 100
-  DISCOUNT_FACTOR = 0.9
-  total > DISCOUNT_THRESHOLD ? total * DISCOUNT_FACTOR : total
+  discount_threshold = 100
+  discount_factor = 0.9
+  total > discount_threshold ? total * discount_factor : total
 end
 
 def checkout(cart, coupons)
