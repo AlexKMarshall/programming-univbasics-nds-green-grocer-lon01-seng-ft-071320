@@ -1,20 +1,40 @@
 def find_item_by_name_in_collection(name, collection)
-  # Implement me first!
-  #
-  # Consult README for inputs and outputs
+  collection.count.times do |index|
+    return collection[index] if collection[index][:item] === name
+  end
+  nil
 end
 
 def consolidate_cart(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This returns a new Array that represents the cart. Don't merely
-  # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  consolidated = []
+  
+  cart.count.times do |index|
+    new_item = cart[index]
+    item_in_cart = find_item_by_name_in_collection(new_item[:item], consolidated)
+    if item_in_cart
+      item_in_cart[:count] += 1
+    else
+      new_item[:count] = 1
+      consolidated << new_item
+    end
+  end
+  consolidated
 end
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+  coupons.count.times do |index|
+    coupon = coupons[index]
+    item_in_cart = find_item_by_name_in_collection(coupon[:item], cart)
+    couponed_item = {
+      item: "#{item_in_cart[:item]} W/COUPON",
+      price: coupon[:cost] / coupon[:num],
+      clearance: item_in_cart[:clearance],
+      count: coupon[:num]
+    }
+    cart << couponed_item
+    item_in_cart[:count] -= coupon[:num]
+  end
+  cart
 end
 
 def apply_clearance(cart)
