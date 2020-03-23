@@ -34,6 +34,7 @@ def apply_coupons(cart, coupons)
   coupons.count.times do |index|
     coupon = coupons[index]
     item_in_cart = find_item_by_name_in_collection(coupon[:item], cart)
+    if item_in_cart &&
     cart << create_couponed_item(coupon, item_in_cart)
     item_in_cart[:count] -= coupon[:num]
   end
