@@ -31,6 +31,10 @@ def create_couponed_item(coupon, item)
 end
 
 def apply_coupons(cart, coupons)
+  new_cart = []
+  
+  
+  
   coupons.count.times do |index|
     coupon = coupons[index]
     item_in_cart = find_item_by_name_in_collection(coupon[:item], cart)
