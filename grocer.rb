@@ -56,8 +56,8 @@ end
 
 def apply_discount(total)
   DISCOUNT_THRESHOLD = 100
-  DISCOUNT_PERCENT = 10
-  total > DISCOUNT_THRESHOLD
+  DISCOUNT_FACTOR = 0.9
+  total > DISCOUNT_THRESHOLD ? total * DISCOUNT_FACTOR : total
 end
 
 def checkout(cart, coupons)
