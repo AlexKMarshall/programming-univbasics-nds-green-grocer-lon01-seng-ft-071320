@@ -47,7 +47,7 @@ end
 def apply_clearance(cart)
   cart.count.times do |index|
     item = cart[index]
-    item[:price] *= 0.8 if item[:clearance]
+    item[:price] = discount(item[:price]) if item[:clearance]
   end
   cart
 end
