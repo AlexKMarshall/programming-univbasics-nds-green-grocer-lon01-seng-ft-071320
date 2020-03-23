@@ -62,6 +62,8 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
+  pp cart
+  puts "then"
   consolidate_cart(cart)
   apply_coupons(cart, coupons)
   pp cart
