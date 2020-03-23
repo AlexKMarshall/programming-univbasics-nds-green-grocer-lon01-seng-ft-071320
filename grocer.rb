@@ -64,8 +64,8 @@ def checkout(cart, coupons)
   # some irritated customers
   pp cart
   puts "then"
-  consolidate_cart(cart)
-  apply_coupons(cart, coupons)
+  consolidated = consolidate_cart(cart)
+  apply_coupons(consolidated, coupons)
   pp cart
   result = 0
   cart.count.times do |index|
